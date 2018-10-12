@@ -1,8 +1,12 @@
 .App {
   width: 80%;
+  text-align: center;
   margin: 0 auto;
-  background: #333;
+  background: white;
   box-shadow: 0 5px 10px gray;
   padding: 20px;
-  color: antiquewhite;
+  color: #333;
 }
+
+
+

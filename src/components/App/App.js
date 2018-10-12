@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import AddContact from "../AddContact/AddContact";
 import "./App.css";
-import AddContact from "./AddContact/AddContact";
-
+import "../AddContact/AddContact.css";
 class App extends Component {
-
   state = {
-    contacts: JSON.parse(localStorage.getItem('contacts') || '[]'),
+    contacts: JSON.parse(localStorage.getItem("contacts") || "[]"),
     previousState: null
-  }
+  };
 
   removeContact = contactId => {
     this.setState({
@@ -21,20 +20,20 @@ class App extends Component {
       contacts: this.state.contacts.concat({
         id: Date.now(),
         name: name,
-        number: number     
+        number: number
       })
-    })
-  }
+    });
+  };
 
   componentDidUpdate() {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
   }
 
   render() {
     return (
       <div className="App">
         <h1>List of people I might call someday</h1>
-        <AddContact addContact={this.addContact}/>
+        <AddContact addContact={this.addContact} />
         <ul>
           {this.state.contacts.map(contact => (
             <li key={contact.id}>

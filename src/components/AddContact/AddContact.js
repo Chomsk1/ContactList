@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import TextField from "@material-ui/core/TextField";
+import "./AddContact.css";
 
 class AddContact extends Component {
   state = {
     contactName: "",
-    contactNumber: '',
+    contactNumber: "",
     error: null
   };
 
@@ -16,19 +20,19 @@ class AddContact extends Component {
       return;
     }
     if (this.state.contactNumber === "") {
-        this.setState({
-          error: new Error("You need to provide a number!")
-        });
-        return;
-      } 
+      this.setState({
+        error: new Error("You need to provide a number!")
+      });
+      return;
+    }
     if (isNaN(this.state.contactNumber)) {
-        this.setState({
-            error: new Error("You need to provide a number!")
-          });
-          return;
-    }  
+      this.setState({
+        error: new Error("You need to provide a number!")
+      });
+      return;
+    }
     this.props.addContact(this.state.contactName, this.state.contactNumber);
-    this.setState({ contactName: "", contactNumber: '', error: null });
+    this.setState({ contactName: "", contactNumber: "", error: null });
   };
 
   handleNameChange = event => {
@@ -43,22 +47,32 @@ class AddContact extends Component {
     });
   };
 
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         {this.state.error && <p>{this.state.error.message}</p>}
-        <input
-          placeholder="Add contact name"
+        <TextField
+          label="Name"
+          margin="normal"
           value={this.state.contactName}
           onChange={this.handleNameChange}
         />
-         <input
-          placeholder="Add contact number"
+        <TextField
+          
+          label="Number"
+          margin="normal"
           value={this.state.contactNumber}
           onChange={this.handleNumberChange}
         />
-        <button>Add</button>
+        <Button
+         type="submit"
+          className="button"
+          variant="fab"
+          color="primary"
+          aria-label="Add"
+        >
+          <AddIcon />
+        </Button>
       </form>
     );
   }

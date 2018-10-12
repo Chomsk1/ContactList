@@ -11,19 +11,19 @@ class AddContact extends Component {
     event.preventDefault();
     if (this.state.contactName === "") {
       this.setState({
-        error: new Error("You need to come up with a name")
+        error: new Error("You need to come up with a name!")
       });
       return;
     }
     if (this.state.contactNumber === "") {
         this.setState({
-          error: new Error("You need to provide a number")
+          error: new Error("You need to provide a number!")
         });
         return;
       } 
     if (isNaN(this.state.contactNumber)) {
         this.setState({
-            error: new Error("You need to provide a number")
+            error: new Error("You need to provide a number!")
           });
           return;
     }  

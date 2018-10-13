@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import AddContact from "../AddContact/AddContact";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import "./App.css";
 import "../AddContact/AddContact.css";
 class App extends Component {
@@ -38,11 +40,11 @@ class App extends Component {
           {this.state.contacts.map(contact => (
             <li key={contact.id}>
               {contact.name} {contact.number}
-              {
-                <button onClick={() => this.removeContact(contact.id)}>
-                  Remove
-                </button>
-              }
+             
+               { <IconButton onClick={() => this.removeContact(contact.id)} aria-label="Delete" >
+                <DeleteIcon fontSize="small" />
+              </IconButton>
+               }
             </li>
           ))}
         </ul>

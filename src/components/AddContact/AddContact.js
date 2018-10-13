@@ -4,6 +4,8 @@ import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import "./AddContact.css";
 
+
+
 class AddContact extends Component {
   state = {
     contactName: "",
@@ -57,6 +59,7 @@ class AddContact extends Component {
           value={this.state.contactName}
           onChange={this.handleNameChange}
         />
+        <div>
         <TextField
           
           label="Number"
@@ -64,7 +67,9 @@ class AddContact extends Component {
           value={this.state.contactNumber}
           onChange={this.handleNumberChange}
         />
+        </div>
         <Button
+        
          type="submit"
           className="button"
           variant="fab"
@@ -72,8 +77,10 @@ class AddContact extends Component {
           aria-label="Add"
         >
           <AddIcon />
-        </Button>
+        </Button>       
       </form>
+    
+      
     );
   }
 }
